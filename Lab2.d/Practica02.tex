@@ -1,0 +1,906 @@
+\documentclass[article,12pt]{article}
+\input{../header}
+
+\title{AI 4 Games \\
+Assessment Milestone 2\\
+Version management 
+ }
+%\author{Vladimir Estivill-Castro\\
+%Griffith University }
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+\section*{Objectives}
+\begin{enumerate}
+\item  Learn to use and understand the benefits of a system for
+version control.
+
+\item  Review \Cpp\/ programming.
+
+\begin{enumerate}
+\item  Review the compilation of \Cpp\/ modules.
+\item  usage of {\tt makefiles}.
+\end{enumerate}
+
+\item Generate documentation from the code
+
+\item The software engineering pattern  MVC (Model-View-Controller).
+\end{enumerate}
+
+\section*{Instructions}
+This practical laboratory has 4 parts. Each of these parts correspond to an objective.
+The first discusses software development with tools that support the
+management of versions of code. The later part includes
+a discussion of a software pattern heavily used in the architecture
+of computer games and web applications.
+
+In each part you must complete several steps. We do not provide detailed instructions
+for many steps. You need to think and understand what you are doing.
+Copying commands from the text here directly (and blindly) may be insufficient.
+Specially since this instructions are generic about having access to
+a server machine where to create a repository.
+
+Nevertheless, you are required to make a learning experience report that
+shall include screen-shoots of the completion of the steps/activities.
+
+
+\section*{A fast introduction to Subversion}
+Managing the code of a software development project under a version control system
+is crucial. In fact, as agile methodologies and incremental development
+are more common, it is important to have a clear trace of which version
+of the code supports which functionality.
+
+Moreover, with development methods like Test-Driven Development, is even
+more important to develop functionality incrementally and to regularly
+commit version of the code where it is know what works (and which tests are green)
+and what functionality is to be incorporated. 
+Moreover, if the code eventually fails to work, it is easy to revert to an older
+version or to review recent changes to discover what/where/how a bug has been
+introduced, or how functionality believed to be working correctly was in fact
+not fully tested and needs refactoring.
+
+There are 3 popular version systems for developing software and they are
+all public domain. They have been used repeatedly in industry and are
+share-ware. These are
+\begin{enumerate}
+\item {\tt cvs}  \url {http://cvs.nongnu.org/}
+\item {\tt svn} (subversion) \url{ http://svnbook.red-bean.com/}
+\item {\tt git}  \url { http://svnbook.red-bean.com/}
+\end{enumerate}
+
+Here we give a quick guide of setting an {\tt svn} server for your project.
+{\bf Subversion}
+is a system of version control sometimes called a system for control
+of configurations (where a configuration is the state of files
+in a particular machine at a particular time).
+In such a system, you usually interact with a server that holds the repository
+The server could be the same machine you work on, however, for example,
+if you work at University and at home it is convenient to set a server machine you can access
+from both places (over the Internet).
+When you have a server that you can access from two places you don't have
+to carry the project files with you. When you start working in a
+particular location you do an {\tt update} to obtain the latest version
+of your files and when you are finished working you do a {\tt commit} to
+reflect your changes into the repository.
+The repository works for you as a backup as well and you can always retrieve
+earlier versions. You  would never lose your files, or your earlier versions
+of your files.
+
+Therefore, such a system allows you to push files with progressive changes
+ into a server
+ (with the command {\tt commit}).
+Symmetrically, you can reconcile the fresh version in a server into your local
+copy with the command  ({\tt update}) and obtain the latest version that has
+changes (or updates from other developers when you work within
+a team of developers).
+It is even a very useful tool when you work alone.
+
+The complete documentation and guides for
+{\bf Subversion} is available on line:
+\begin{quote}
+\url{http://svnbook.red-bean.com/ }
+\end{quote}
+
+With {\em Subversion},
+you can un-do particular changes, see the differences between a previous version
+and your current version and you can review who has committed what.
+In fact, managers in many developing teams can trace the work
+of the software developers by reviewing who has worked on what.
+It also assist lecturers in universities monitor the regular
+work of students on a project.
+It also allows developing into 
+ ({\em branches})
+and to mark some version with
+ ({\em tags})  when we want to name a particular stable version of the software.
+
+The repository is the central place where changes are recorded.
+The copies on your working computer (maybe you lap-top or a desktop
+in a lab) are called 
+{\em sandboxes}
+When you are satisfied with a version that fulfills some functionality
+you should reflect it into the repository with {\tt commit}.
+When you need the latest version from the repository to
+start work on some module you need to do an {\tt update}.
+In fact, you can do this not only with code (programming language files),
+but you can do it with images, documentation, reports of assignments, etc.
+That is, you can use it to regularly work on an assignment and
+progressively complete parts, committing every time a section is completed
+and improving the previous version into a new one closer to completion
+every time.
+Some of this ideas can be achieved by placing files in {\em the cloud}
+though the Internet, but many of the {\em cloud} facilities
+provide storage space, but little support for version control of
+the same file.
+
+For working with {\em subversion} from a command line you use
+the command {\tt svn} in {\tt POSIX} (systems like MacOS terminal
+or LINUX terminal) provided that it is installed.
+However, there are many share-ware GUI tools to use
+{\em subversion} (or also {\tt cvs} or {\tt git}).
+For example
+{\tt esvn} and  {\tt rapidsvn} work in LINUX 
+while
+in {\tt Windows}, the client {\tt TortoiseSVN} is available.
+The software development environments like
+{\tt Eclipse} or {\tt XCode} also support version control systems like
+{\tt git} and {\tt svn}.
+
+\subsection*{Important points}
+A system of version control allows you to manage the life-cycle of developing
+a computer game. It allows you to trace and follow the changes as you
+develop the code. It enables you to compare versions and
+you can always go back.
+You can also put aside and deploy a version you do not want to change any more
+while evolving other parts.
+
+How doe the system work?
+You will have a central deposit (think of it like a database of all
+the versions of all the files you register with the repository).
+A log will record all changes.
+You can have many working copies, in one or several machines.
+You will make changes as you work and you record the changes
+in the repository without losing previous versions.
+{\em Subversion} will keep track of all versions for you.
+This helps a lot in debugging code as you can easily trace
+``how did this bug entered my code?''.
+
+\subsection*{Connecting with a server}
+This instructions are a guideline that assumes we have access to some
+server in the Internet with IP address
+\begin{quote}
+{\tt 193.145.50.179}.
+\end{quote}
+If you have access to some using a DNS address, this will work as well.
+Just remember you must have an account so you can login into the
+server with a command like\\
+{\tt ssh MyAccount@193.145.50.179}.\\
+That is, from home, or from a lab, or from a laptop with Wi-Fi access
+you can use
+{\tt ssh} ({\em secure socket-layer shell}) (from  {\tt WINDOWS}
+you can use a share-ware tool like {\tt putty} ).
+
+Verify you can connect.
+\begin{quote}
+{\tt ssh MyAccount@193.145.50.179}
+\end{quote}
+If everything goes well you would be connected to your remote
+server. This server must be set up to run the {\em subversion} server.
+It is not hard to do this if you want to enable a machine of your own
+and make it visible in the Internet, but usually your University will
+set this up.
+
+You close the connection with {\tt exit}.
+\subsection*{ Creating a repository}
+Creating a repository is an usual activity; that is, it is not
+something one does every day. In fact, the repository
+may be used by s several projects, so it is even rare to create 
+a repository more often than facing a project.
+
+Thus, repositories are usually created once at the beginning of
+a project (or even less frequently).
+That is why is common to forget how to do this
+and one needs to follow manuals and instructions.
+In is important not to fool around (or modify)
+configuration files created by the repository and its database.
+More often than not one destroys the well-order of the repository
+and it would be your fault, and in this  case, you may lose
+all your files.
+
+
+Read all instructions before following this steps (or any instructions to
+set up a repository). Instructions may require adjustment for you
+particular working environment and it is good to have
+a clear idea of what you want to achieve.
+Thus, read this instructions completely and make sure you have
+a clear idea of is that we want to achieve.
+If you are not sure about something, read some more and do not start.
+
+\subsubsection*{The steps }
+\begin{enumerate}
+\item
+Connect to the server machine like before (using {\tt ssh}).
+The server machine will hold the {\tt svn} repository
+and we assume the the IP address (or the DNS) equivalent
+is visible trough the Internet; we do not discuss here if your
+University uses firewalls and you need to set a VPN (virtual
+private network).
+We assume that the server also support {\tt POSIX} commands.
+
+For example, try the command 
+ {\tt ls} to list the files in your account on the server machine.
+(it may be the case you do not have any).
+The command {\tt pwd} will reply with your current path,
+and the command 
+{\tt cd} without any arguments brings you back to your 
+({\em home directory}). We assume here some familiarity with UNIX shell commands.
+\item We make an initial structure for the repository.
+This structure is not make inside the repository, but in a temporal
+folder.  We will place it in the repository by importing it into
+the repository. Then we ignore it (and better, destroy it).
+\begin{quote}
+{\tt mkdir TemporaryFolder}
+\end{quote}
+This command creates the folder
+{\tt TemporaryFolder}.
+Now, let go into this folder.
+\begin{quote}
+{\tt
+cd TemporaryFolder
+}
+\end{quote}
+Verify you are inside this folder, you can do this with the command
+ {\tt pwd} to see which is the current path.
+Inside {\tt TemporaryFolder} issue the command
+\begin{quote}
+{\tt
+mkdir trunk tags branches
+}
+\end{quote}
+This last command creates 3 new folders that constitute the recommended
+structure to organize your files for using
+{\em Subversion}.
+The working files will be placed in
+ {\tt trunk}.
+So, let move inside this folder
+\begin{quote}
+{\tt
+cd trunk
+}
+\end{quote}
+
+We now make a folder to hold \Cpp\/ files or other files
+to build or software.
+\begin{quote}
+{\tt
+mkdir ProjectPackMan.d
+}
+\end{quote}
+
+Now navigate inside this recently created folder.
+\begin{quote}
+{\tt
+cd ProjectPackMan.d
+}
+\end{quote}
+
+Using an editor, for example in
+POSIX, we can use {\tt vi}
+and construct some code.
+ Open the file
+{\tt hello.cpp} 
+and place in the following content.\\
+\input{P2CodeTeX.d/hello.tex}
+
+
+\item Exit the structure
+\begin{quote}
+{\tt
+cd ../../../
+}
+\end{quote}
+This exits twice to the parent folder. You can achieve the same with
+\begin{quote}
+{\tt
+cd 
+}
+\end{quote}
+since this takes you to the {\tt home} directory.
+Verify this with
+\begin{quote}
+{\tt
+ls
+}
+\end{quote}
+since you should see the folder  {\tt TemporaryFolder}.
+
+This is an initial folder structure we will place in the repository (but will
+not be managed by the repository).
+
+
+\item We now do create a folder where the repository will reside
+\begin{quote}
+{\tt
+mkdir IndividualrepositoryFolder
+}
+\end{quote}
+
+\item We now make the {\em Subversion} command to install all the folders
+we created and the configuration files to build a repository.
+We will not need to do anything else, perhaps for a long time.
+
+\begin{quote}
+{\tt
+svnadmin create IndividualrepositoryFolder
+}
+\end{quote}
+
+You cans see what {\em Subversion} has done with
+\begin{quote}
+{\tt
+ls IndividualrepositoryFolder
+}
+\end{quote}
+However, do not touch the files in this folder unless you have become
+a {\em Subversion} expert and you are absolutely sure of what you are doing.
+Even if you want to alter things here it is best to use the 
+administration tools of
+ {\em Subversion} itself.
+
+\item We incorporate the structure into the repository with a command in one line
+\footnote{
+Remember we are using
+MyAccount as the name of your account in the server.}:
+\begin{flushleft}
+{\small
+{\tt
+svn import TemporaryFolder file:///home/MyAccount/IndividualrepositoryFolder -m ``Initial''
+}
+}
+\end{flushleft}
+
+\item You can use subversion commands to check the folder is inside the
+repository with
+\begin{quote}
+{\small
+{\tt
+svn list file:///home/MyAccount/IndividualrepositoryFolder/trunk
+}}
+\end{quote}
+It is very important to realize the initial structure is not under version control
+although it was used to place folders into the repository.
+That is, the initial structure is not a local/working copy.
+Working in it any further is not useful. To have a working copy,
+it must be extracted first from the repository.
+{\em Subversion} only keeps track of files we tell them to keep track of.
+
+\item Since we are finished with the work a t the server, we shall disconnect.
+\begin{quote}
+{\tt
+exit
+}
+\end{quote}
+
+\end{enumerate}
+
+
+\subsection*{ Obtaining a sandbox}
+Now we will obtain a copy out of the repository to work on it.
+This will be a local copy of the files and it is also an unusual
+operation, since the first time we create a sandbox
+for a particular machine (say your laptop), we do not extract
+again (what would be a frequent operation is to refresh the local
+copy with its most recent files from the repository, but not to
+create it).
+To create a  sandbox in the language of {\tt svn} is to perform
+a {\tt checkout}.
+This could be done with several client tools but a single POSIX command is
+as follows.
+\begin{flushleft}
+{\scriptsize
+{\tt
+svn checkout svn+ssh://MyAccount@193.145.50.179/home/MyAccount/IndividualrepositoryFolder/trunk/ProjectPackMan.d
+}
+}
+\end{flushleft}
+
+This may request your password on the server several times and if all goes well
+the structure and files created will be reflected in your local file system.
+\subsection*{ Using la your copy local}
+
+\begin{enumerate}
+\item Lets work a bit with the file
+ {\tt hello.cpp}.
+Navigate the structure of folders until you find the file
+and you can open it with an editor.
+Change the message it prints and make sure it print your name and
+lastname. No need to compile the program now.
+
+\item To reflect this local changes into the repository
+use the following command
+\begin{quote}
+{\tt svn commit
+}
+\end{quote}
+You may find that this gives you error. It could be because you have not configured
+a default editor for {\tt svn}.
+This is because every {\tt commit} needs a message to place in the log and to
+associate with this new version. Making a commit creates a new version
+if there are modified files.
+\begin{quote}
+{\tt svn commit -m ``Now the program has my name''
+}
+\end{quote}
+The option {\tt -m} will place in the log the message.
+Messages like this help software developers know what is this version
+about and they must be meaningful so you can search the log for
+particular states of the repository. Do not put the date (or the time),
+since the system takes care of that.
+
+When committing, you are connecting to the server, and you will be asked for 
+your password to connect into the server.
+
+\item What does the command do?
+\begin{quote}
+{\tt
+rm hello.cpp
+}
+\end{quote}
+Why don't you try it? You will see that the file you just made changes
+to has disappeared, however, is it lost?
+It is not gone thanks to the repository, you can recuperate it with the following
+command.
+\begin{quote}
+{\tt
+svn update
+}
+\end{quote}
+Now you get the last version from the repository and if you inspect the file
+{\tt hello.cpp}, you wills see is the version that prints your name.
+
+\end{enumerate}
+
+\subsubsection*{Task}
+Disconnect from the current machine you are on. Use another computer in the lab
+or in your home and repeat the exercise of creating (checking out) a
+local copy in that machine. Then inspect the file
+{\tt hello.cpp}. See what is the state of the message that
+it prints. Change the name to an abbreviated version of your name
+using an editor. Then {\tt commit} this new version.
+Go back to the machine where you checked out for the first time and
+do an {\tt update} (NOT A {\tt checkout}). Verify you
+now have the latest version.
+
+Creating a local copy should be a rather infrequent operation.
+It may be better to do the checkout also to a
+USB {\em flash} memory or to an external disc. That way you also
+have mobility of the local copy without creating too many.
+
+
+\subsubsection*{Populating the local copy and reflecting in the repository  }
+Once you have been working with one
+{\em sandbox} you must place the files for your programming tasks
+in the folders there.
+For example, create and edit a file named {\tt README } inside the folder
+for the code.
+Review the following content and place what is suitable in your case.
+\begin{quote}
+\framebox{
+\parbox{12cm}{
+Laboratory 2 -- a program for modeling objects in PackMan.
+Copyright (C) 2011, {\tt YOUR NAME}.
+
+Based on an initial framework by Vlad Estivill-Castro / Griffith University
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+This folder contains the implementation of XXXX
+}}
+\end{quote}
+An alternative text may be
+\begin{quote}
+\framebox{
+\parbox{12cm}{
+This program is developed as part of an assignment at XXXXXXX
+Based on an initial framework by Vlad Estivill-Castro / Griffith University
+
+All rights regarding the intellectual property generated here
+are exclusive property of the author under the laws of
+CITY AND COUNTRY.
+}}
+\end{quote}
+To add this file under the control of
+{\em  Subversion} we must do: 
+\begin{quote}
+{\tt
+svn add README
+}
+\end{quote}
+You should see a reply like
+\begin{quote}
+{\tt
+A         README
+}
+\end{quote}
+This is 
+{\em Subversion} reporting it will keep a watch on this file from now
+on, but not that it is already reflected in the repository.
+To actually place it in the repository, we must issue the next command.
+\begin{quote}
+{\tt
+svn commit -m ``Description of intellectual rights of my program''
+}
+\end{quote}
+You should notice that the version number increases.
+
+\subsubsection*{Obtaining information}
+Edit the file  {\tt README} once more to include todays date.
+To see the state of the files in a folder you use
+{\tt svn status}. Just try it:
+\begin{quote}
+{\tt
+ svn status
+}
+\end{quote}
+The response should look like
+\begin{quote}
+{\tt
+M      README
+}
+\end{quote}
+This means that the file
+{\tt  README} has been modified and the
+version currently in our  {\em sandbox} is different of what is
+in the repository.
+What is the difference? you can find out with the following command
+\begin{quote}
+{\tt
+svn diff README
+}
+\end{quote}
+
+Besides the {\em subversion} command
+{\tt  status} that gives a status report,
+we can find the trace of updates.
+For example, the command
+{\tt log} gives a summary of the revision that have been placed in
+the repository.
+The report includes information of who made changes and the
+comment that was used to commit the changes.
+Make a {\tt commit} and follow it with :
+\begin{quote}
+{\tt
+svn log
+}
+\end{quote}
+This time the answer may be short and very useful as we
+only been using the repository today, however, you will soon find
+it very useful.
+
+\subsubsection*{Other interesting commands }
+\begin{enumerate}
+    \item 
+{\tt svn help}: The system provides assistance using this command.
+    \item {\tt svn {\em subcommand} help}:
+Provides help regarding the command provided as an argument.
+\item
+    {\tt svn mkdir}: Creates a folder/directory
+under version control
+ (you still need to make {\tt commit} to reflect the change in the repository)
+    \item {\tt svn del}: remove from file watch
+    \item {\tt svn move}: rename a file and keep watch under the new name 
+but the repository maintains the history
+    \item {\tt svn merge}: combine local changes and changes
+in the repository
+    \item {\tt svn copy}: copy a file and keep the new copy
+also under watch
+\end{enumerate}
+Review the manuals and all information you can with
+{\em Subversion}. Practice with the regular cycle will eventually
+feel natural. With 20\%  or less of the commands you will
+get much use of {\tt svn}.
+
+Remember, with {\em subversion} you can have several working copies,
+in the computers at university, in your home, in your external drives
+or USB drives, and they can all be synchronized with {\tt svn}.
+No longer sending a version by e-mail to yourself for backup
+and soon you can learn to actually share a repository with a team
+of other software developers. Remember, to start work
+get a fresh copy with {\tt update}, and to save your changes
+so far, do {\tt svn commit}.
+
+How to undo your local changes? {\tt revert}.
+
+If you just want to revert a single file
+\begin{quote}
+{\tt
+svn revert filename
+}
+\end{quote}
+If by accident you destroy or delete a file under version control,
+we have seen how to recover it.
+With
+{\tt svn}, nothing serious has happened yet:
+\begin{quote}
+{\tt
+svn update
+}
+\end{quote}
+and you recover your file.
+How to get back to the previous version?
+If you want to go back to a specific version, say 178,
+(all files in the folder will be reverted accordingly)
+\begin{quote}
+{\tt
+svn merge -rHEAD:178 directory
+}
+\end{quote}
+but if you want a specific file only
+\begin{quote}
+{\tt
+svn merge -rHEAD:178 filename
+}
+\end{quote}
+\subsection*{What shall you submit?}
+A report of your learning experience with screen-captures
+of completed tasks.
+
+\subsection*{Reviewing compilation}
+Copy the files in the folder
+{\tt PackMan.d};
+Vlad Estivill-Castro offers no warranties on the framework provided.
+This is purely a pedagogic exercise and the software provided has no other purpose.
+Study the classes  {\tt ListBoardObjects} (it is defining in the corresponding two files
+{\tt ListBoardObjectsH.h} and {\tt ListBoardObjects.cpp}).
+Develop a class \\
+{\tt VectorBoardObjects}.\\
+This class should provide the same functionality but it enables storing
+a maximum of 4 objects in the collection.
+
+Develop a main program that test all the methods of your new classes
+{\tt monster} and {\tt bomb}.
+It also verifies the working order of your class
+{\tt VectorBoardObjects}.
+That is, your main program can create objects of the different classes
+(for example {\tt Player}, {\tt Wall}, {\tt Bomb}) and store them and
+retrieve them from the vector.
+However, the interface shall be the same as for the list. So it should
+be possible to switch back and forward between the list implementation
+and the vector implementation with little localized change.
+
+The interface at the moment has these properties.
+\begin{enumerate}
+\item The constructor in 
+{\tt ListBoardObjects} build a list with at least on background object
+ (this lists are never empty).
+\item {\tt fitrstObject} supplies the first object in the collection.
+\item {\tt nextObject} supplies the next object after a cursor and
+advances the cursor. Return {\tt NULL} is no object exists and only
+works after the function
+{\tt firstObject} has been called~\footnote{
+Explain the pre-condition and post-conditions of these methods.
+Visit the web site \url{http://en.wikipedia.org/wiki/Design_by_contract}
+and find definitions for the following terms:
+{\em programming by contract}, {\em pre-condition}, {\em 
+post-condition},
+{\em invariant}.
+}.
+\item {\tt addObject} adds an object to the collection.
+\item {\tt elimiantePlayer} removes a player object from the collection.
+What are the post-conditions of this method? What happens if there
+are no players in the collection? Write down the pre-conditions.
+\item {\tt isThereAWall?} allows to know if there is a wall in the collection.
+\item {\tt cookieValue} allows to know the value of a cookie in the
+collection. What are the pre-conditions of this method?
+What are the post-conditions?
+How is a cookie removed from the collection?
+\end{enumerate}
+
+Make sure you can perform a {\em Unit Testing}
+({\small \url{http://en.wikipedia.org/wiki/Unit_test}})
+  of your implementation of your collection based on vectors..
+\subsection*{What shall be submitted?}
+All the classes of your new program and a description of the testing
+performed on each of them.
+If possible, evidence you develop-them incrementally and
+using a system for version control.
+
+\subsection*{Patterns}
+Design patterns offer a solution to a specific problem that commonly
+emerges in software design.
+Patterns are helpful in achieving design principles
+like low coupling and high cohesion. They describe how to design or use classes
+and how to assign responsibilities to classes so the principles are
+followed.
+A design pattern usually translates to class definitions and code and it 
+is a template of the roles played by each class.
+They have been developed over lots of experience in many different
+situations
+({\small 
+\url{http://en.wikipedia.org/wiki/Design_pattern_%28computer_science%29
+}}
+).
+
+The design patterns are usually object-oriented and they display the relationships
+and the interactions between classes and objects.
+Typically they do not describe algorithms.
+
+The class
+{\tt ListBoardObject} 
+provides a simpler interface than the large family of methods
+usually available in the standard classes for collection
+in languages like
+\Cpp\/ or {\em Objective-C}.
+Review the pattern
+  {\em Facade} 
+({\small \url{http://en.wikipedia.org/wiki/Facade_pattern}}
+) and describe in what way does the class
+{\tt ListBoardObject} 
+follows this pattern.
+Investigate if there is any relationship with the pattern
+ {\em iterator}?\\
+({\small
+\url{http://en.wikipedia.org/wiki/Iterator_pattern }})
+Use class diagram in UML to describe the design patterns you
+find in this practical laboratory.
+
+\subsubsection*{The pattern MVC}
+The Model View Controller (MVC)\\
+({\small \url{
+http://en.wikipedia.org/wiki/Model%E2%80%93View%E2%80%93Controller}
+}
+)
+is an architectural design pattern of software engineering
+that enables to separate the responsibilities of
+the domain logic from the responsibilities of
+the graphical user interface, and also from the logic of maintaining
+a model.
+It maintains a clear interface between the GUI and the model and uses the
+controller to update the model when users generate events
+or even to update the GUI when the model changes due to
+internal events.
+
+That is, the model separates the data of an application, the interface with the
+user and the control logic into different component
+(each component may be made of one or of many classes).
+This style of request and response is frequent in Web application
+where the view is usually HTML pages and the model
+is a back end database model.
+
+This architecture improves development, but more importantly, it enables
+for easier software maintenance. The architecture of a computer game organized
+this way enables the modification of the user interface
+while still reusing the model and the controller.
+There are several implementation of the MVC patter, but usually
+the flow of interaction is as follows:
+\begin{enumerate}
+\item Users interact with the interface,
+and they generate a request.
+\item The controller captures such request from the user interface
+and associates an action that is suitable to apply to the model.
+\item The controller notifies the model of the action
+and probably observes a change of state in the model that corresponds to a response for the
+requested action.
+\item The controller reviews and makes request to the user interface to
+update is presentation in accordance with the new state of the model.
+\end{enumerate}
+
+
+\subsubsection*{Task --- The pattern MVC}
+Review carefully the code provided. Produce a UML class diagram of all the
+classes involved. That is, review the code in the folder
+{\tt PackMan}.
+Make sure you can compile the code, run it. Make sure you can make an
+execution that consumes all the cookies. Run it with a debugger and
+follow what function c all what method. Once you have an understanding of
+the working of the program develop a detailed UML
+diagram for all classes involved.
+
+The program has a very simple interface. It uses the black-white terminal as a screen and
+the keyboard as input input device. However, it should be possible for you
+to group the classes in your UML diagram into 3 components.
+Label them appropriately as the View, the Model and the Controller.
+Note the traffic of messages between the classes and discover
+who acts as the interface (the door) to the model, the controller and the view.
+
+Make a sequence diagram to illustrate the dynamic behavior of the program,
+form the user's input of a request to move the player, to the token
+in the game moving and consuming a cookie, then back to the update of a new
+state of the game in the screen.
+
+{\bf You must submit these two diagrams}.
+
+
+\subsubsection*{Documentation}
+Documentation of program code is fundamental for its use
+(evolution and re-use).
+It is also crucial during the development of a software application
+like a computer game.
+It is also laborious and error prone to develop documentation after
+the code is working. It is much better to produce documentation
+as the code evolves and is constructed.
+It is in fact better to develop the documentation ahead, as a contract
+description of what the method or class responsibility is.
+What can the code do (or will do), what are the pre-conditions and the post-conditions.
+Document what is the contract you are trying to fulfill with
+an implementation.
+Do this with comments on your code even if you do not have the code.
+Then, we discuss here using tools that extract the documentation
+from this comment and your code. That w ay is also easy to keep the
+documentation up-to-date.
+
+The code provided has almost no documentation. Your task is to insert such documentation
+and to use the tool
+{\tt doxygen}  to generate the documentation from your comments\\
+({\small
+\url{
+http://www.stack.nl/~dimitri/doxygen/}
+}
+).
+
+You can find a simple tutprial about
+{\tt doxygen} and how ti builds the documentation in
+\begin{quote}
+{\footnotesize
+\url{
+http://www-scf.usc.edu/~peterchd/doxygen/
+}}
+\end{quote}
+
+With POSIX, you can automate the task of generating documentation
+by defining a corresponding target in the
+ {\tt Makefile} of your project.
+Make a  {\em target} named {\tt doc}.
+An important point is that
+{\tt doxygen} requires a configuration file named
+ {\tt Doxyfile}.
+Thus, the first time you shall issue the command
+\begin{quote}
+{\tt
+doxygen -g
+}
+\end{quote}
+With this you obtain a default configuration file you can edit.
+Do not forget to do the command
+\begin{quote}
+{\tt
+svn add Doxyfile
+}
+\end{quote}
+This places the configuration file of {\em doxygen} as part of the
+files {\tt svn} keeps track of.
+
+In the configuration file  {\tt Doxyfile} we recommend you review and update
+the section that define values of the following.
+{\tt PROJECT\_NAME}.
+We also recommend you set to
+{\tt YES} the options
+{\tt JAVADOC\_AUTOBRIEF} and
+{\tt EXTRACT\_ALL}.
+
+When completing the editing of the configuration file
+place this fresh version in the repository with
+\begin{quote}
+{\tt
+svn commit
+}
+\end{quote}
+
+
+
+
+\end{document}

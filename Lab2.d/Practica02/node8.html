@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Obtaining a sandbox</TITLE>
+<META NAME="description" CONTENT="Obtaining a sandbox">
+<META NAME="keywords" CONTENT="Practica02">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="Practica02.css">
+
+<LINK REL="next" HREF="node9.html">
+<LINK REL="previous" HREF="node6.html">
+<LINK REL="up" HREF="node3.html">
+<LINK REL="next" HREF="node9.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html133"
+  HREF="node9.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html131"
+  HREF="node3.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html125"
+  HREF="node7.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html134"
+  HREF="node9.html">Using la your copy</A>
+<B> Up:</B> <A NAME="tex2html132"
+  HREF="node3.html">A fast introduction to</A>
+<B> Previous:</B> <A NAME="tex2html126"
+  HREF="node7.html">The steps</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00034000000000000000">
+ Obtaining a sandbox</A>
+</H2>
+Now we will obtain a copy out of the repository to work on it.
+This will be a local copy of the files and it is also an unusual
+operation, since the first time we create a sandbox
+for a particular machine (say your laptop), we do not extract
+again (what would be a frequent operation is to refresh the local
+copy with its most recent files from the repository, but not to
+create it).
+To create a  sandbox in the language of <TT>svn</TT> is to perform
+a <TT>checkout</TT>.
+This could be done with several client tools but a single POSIX command is
+as follows.
+<DIV ALIGN="LEFT">
+<SMALL CLASS="SCRIPTSIZE"><TT>svn checkout svn+ssh://MyAccount@193.145.50.179/home/MyAccount/IndividualrepositoryFolder/trunk/ProjectPackMan.d
+</TT>
+</SMALL>
+
+</DIV>
+
+<P>
+This may request your password on the server several times and if all goes well
+the structure and files created will be reflected in your local file system.
+<BR><HR>
+<ADDRESS>
+Vladimir Estivill-Castro
+2011-12-23
+</ADDRESS>
+</BODY>
+</HTML>

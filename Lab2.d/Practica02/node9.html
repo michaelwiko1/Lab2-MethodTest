@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Using la your copy local</TITLE>
+<META NAME="description" CONTENT="Using la your copy local">
+<META NAME="keywords" CONTENT="Practica02">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="Practica02.css">
+
+<LINK REL="next" HREF="node14.html">
+<LINK REL="previous" HREF="node8.html">
+<LINK REL="up" HREF="node3.html">
+<LINK REL="next" HREF="node10.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html143"
+  HREF="node10.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html141"
+  HREF="node3.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html135"
+  HREF="node8.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html144"
+  HREF="node10.html">Task</A>
+<B> Up:</B> <A NAME="tex2html142"
+  HREF="node3.html">A fast introduction to</A>
+<B> Previous:</B> <A NAME="tex2html136"
+  HREF="node8.html">Obtaining a sandbox</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00035000000000000000">
+ Using la your copy local</A>
+</H2>
+
+<P>
+
+<OL>
+<LI>Lets work a bit with the file
+ <TT>hello.cpp</TT>.
+Navigate the structure of folders until you find the file
+and you can open it with an editor.
+Change the message it prints and make sure it print your name and
+lastname. No need to compile the program now.
+
+<P>
+</LI>
+<LI>To reflect this local changes into the repository
+use the following command
+<BLOCKQUOTE>
+<TT>svn commit
+</TT>
+
+</BLOCKQUOTE>
+You may find that this gives you error. It could be because you have not configured
+a default editor for <TT>svn</TT>.
+This is because every <TT>commit</TT> needs a message to place in the log and to
+associate with this new version. Making a commit creates a new version
+if there are modified files.
+<BLOCKQUOTE>
+<TT>svn commit -m ``Now the program has my name''
+</TT>
+
+</BLOCKQUOTE>
+The option <TT>-m</TT> will place in the log the message.
+Messages like this help software developers know what is this version
+about and they must be meaningful so you can search the log for
+particular states of the repository. Do not put the date (or the time),
+since the system takes care of that.
+
+<P>
+When committing, you are connecting to the server, and you will be asked for 
+your password to connect into the server.
+
+<P>
+</LI>
+<LI>What does the command do?
+<BLOCKQUOTE>
+<TT>rm hello.cpp
+</TT>
+
+</BLOCKQUOTE>
+Why don't you try it? You will see that the file you just made changes
+to has disappeared, however, is it lost?
+It is not gone thanks to the repository, you can recuperate it with the following
+command.
+<BLOCKQUOTE>
+<TT>svn update
+</TT>
+
+</BLOCKQUOTE>
+Now you get the last version from the repository and if you inspect the file
+<TT>hello.cpp</TT>, you wills see is the version that prints your name.
+
+<P>
+</LI>
+</OL>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html145"
+  HREF="node10.html">Task</A>
+<LI><A NAME="tex2html146"
+  HREF="node11.html">Populating the local copy and reflecting in the repository  </A>
+<LI><A NAME="tex2html147"
+  HREF="node12.html">Obtaining information</A>
+<LI><A NAME="tex2html148"
+  HREF="node13.html">Other interesting commands </A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html143"
+  HREF="node10.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html141"
+  HREF="node3.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html135"
+  HREF="node8.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html144"
+  HREF="node10.html">Task</A>
+<B> Up:</B> <A NAME="tex2html142"
+  HREF="node3.html">A fast introduction to</A>
+<B> Previous:</B> <A NAME="tex2html136"
+  HREF="node8.html">Obtaining a sandbox</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Vladimir Estivill-Castro
+2011-12-23
+</ADDRESS>
+</BODY>
+</HTML>

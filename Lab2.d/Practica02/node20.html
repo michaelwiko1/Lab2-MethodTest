@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Documentation</TITLE>
+<META NAME="description" CONTENT="Documentation">
+<META NAME="keywords" CONTENT="Practica02">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="Practica02.css">
+
+<LINK REL="previous" HREF="node19.html">
+<LINK REL="up" HREF="node17.html">
+<LINK REL="next" HREF="node21.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html254"
+  HREF="node21.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html252"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html248"
+  HREF="node19.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html255"
+  HREF="node21.html">About this document ...</A>
+<B> Up:</B> <A NAME="tex2html253"
+  HREF="node17.html">Patterns</A>
+<B> Previous:</B> <A NAME="tex2html249"
+  HREF="node19.html">Task   The</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00039300000000000000">
+Documentation</A>
+</H3><SMALL CLASS="SMALL">
+Documentation of program code is fundamental for its use
+(evolution and re-use).
+It is also crucial during the development of a software application
+like a computer game.
+It is also laborious and error prone to develop documentation after
+the code is working. It is much better to produce documentation
+as the code evolves and is constructed.
+It is in fact better to develop the documentation ahead, as a contract
+description of what the method or class responsibility is.
+What can the code do (or will do), what are the pre-conditions and the post-conditions.
+Document what is the contract you are trying to fulfill with
+an implementation.
+Do this with comments on your code even if you do not have the code.
+Then, we discuss here using tools that extract the documentation
+from this comment and your code. That w ay is also easy to keep the
+documentation up-to-date.
+</SMALL>
+<P>
+<SMALL CLASS="SMALL">The code provided has almost no documentation. Your task is to insert such documentation
+and to use the tool
+<TT>doxygen</TT>  to generate the documentation from your comments
+<BR>(<SMALL CLASS="SMALL"><TT><A NAME="tex2html13"
+  HREF="
+http://www.stack.nl/~dimitri/doxygen/">http://www.stack.nl/~dimitri/doxygen/</A></TT></SMALL>
+).
+</SMALL>
+<P>
+<SMALL CLASS="SMALL">You can find a simple tutprial about
+<TT>doxygen</TT> and how ti builds the documentation in
+</SMALL>
+<BLOCKQUOTE><SMALL CLASS="SMALL"><SMALL CLASS="FOOTNOTESIZE"><TT><A NAME="tex2html14"
+  HREF="
+http://www-scf.usc.edu/~peterchd/doxygen/
+">http://www-scf.usc.edu/~peterchd/doxygen/
+</A></TT></SMALL>
+</SMALL></BLOCKQUOTE>
+<P>
+<SMALL CLASS="SMALL">With POSIX, you can automate the task of generating documentation
+by defining a corresponding target in the
+ <TT>Makefile</TT> of your project.
+Make a  <EM>target</EM> named <TT>doc</TT>.
+An important point is that
+<TT>doxygen</TT> requires a configuration file named
+ <TT>Doxyfile</TT>.
+Thus, the first time you shall issue the command
+</SMALL>
+<BLOCKQUOTE><SMALL CLASS="SMALL"><TT>doxygen -g
+</TT>
+</SMALL></BLOCKQUOTE><SMALL CLASS="SMALL">
+With this you obtain a default configuration file you can edit.
+Do not forget to do the command
+</SMALL>
+<BLOCKQUOTE><SMALL CLASS="SMALL"><TT>svn add Doxyfile
+</TT>
+</SMALL></BLOCKQUOTE><SMALL CLASS="SMALL">
+This places the configuration file of <EM>doxygen</EM> as part of the
+files <TT>svn</TT> keeps track of.
+</SMALL>
+<P>
+<SMALL CLASS="SMALL">In the configuration file  <TT>Doxyfile</TT> we recommend you review and update
+the section that define values of the following.
+<TT>PROJECT_NAME</TT>.
+We also recommend you set to
+<TT>YES</TT> the options
+<TT>JAVADOC_AUTOBRIEF</TT> and
+<TT>EXTRACT_ALL</TT>.
+</SMALL>
+<P>
+<SMALL CLASS="SMALL">When completing the editing of the configuration file
+place this fresh version in the repository with
+</SMALL>
+<BLOCKQUOTE><SMALL CLASS="SMALL"><TT>svn commit
+</TT>
+</SMALL></BLOCKQUOTE>
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html254"
+  HREF="node21.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html252"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html248"
+  HREF="node19.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html255"
+  HREF="node21.html">About this document ...</A>
+<B> Up:</B> <A NAME="tex2html253"
+  HREF="node17.html">Patterns</A>
+<B> Previous:</B> <A NAME="tex2html249"
+  HREF="node19.html">Task   The</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Vladimir Estivill-Castro
+2011-12-23
+</ADDRESS>
+</BODY>
+</HTML>

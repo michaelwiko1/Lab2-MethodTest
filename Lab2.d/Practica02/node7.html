@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The steps </TITLE>
+<META NAME="description" CONTENT="The steps ">
+<META NAME="keywords" CONTENT="Practica02">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="Practica02.css">
+
+<LINK REL="previous" HREF="node6.html">
+<LINK REL="up" HREF="node6.html">
+<LINK REL="next" HREF="node8.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html123"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html121"
+  HREF="node6.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html117"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html124"
+  HREF="node8.html">Obtaining a sandbox</A>
+<B> Up:</B> <A NAME="tex2html122"
+  HREF="node6.html">Creating a repository</A>
+<B> Previous:</B> <A NAME="tex2html118"
+  HREF="node6.html">Creating a repository</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00033100000000000000">
+The steps </A>
+</H3>
+
+<OL>
+<LI>Connect to the server machine like before (using <TT>ssh</TT>).
+The server machine will hold the <TT>svn</TT> repository
+and we assume the the IP address (or the DNS) equivalent
+is visible trough the Internet; we do not discuss here if your
+University uses firewalls and you need to set a VPN (virtual
+private network).
+We assume that the server also support <TT>POSIX</TT> commands.
+
+<P>
+For example, try the command 
+ <TT>ls</TT> to list the files in your account on the server machine.
+(it may be the case you do not have any).
+The command <TT>pwd</TT> will reply with your current path,
+and the command 
+<TT>cd</TT> without any arguments brings you back to your 
+(<EM>home directory</EM>). We assume here some familiarity with UNIX shell commands.
+</LI>
+<LI>We make an initial structure for the repository.
+This structure is not make inside the repository, but in a temporal
+folder.  We will place it in the repository by importing it into
+the repository. Then we ignore it (and better, destroy it).
+<BLOCKQUOTE>
+<TT>mkdir TemporaryFolder</TT>
+
+</BLOCKQUOTE>
+This command creates the folder
+<TT>TemporaryFolder</TT>.
+Now, let go into this folder.
+<BLOCKQUOTE>
+<TT>cd TemporaryFolder
+</TT>
+
+</BLOCKQUOTE>
+Verify you are inside this folder, you can do this with the command
+ <TT>pwd</TT> to see which is the current path.
+Inside <TT>TemporaryFolder</TT> issue the command
+<BLOCKQUOTE>
+<TT>mkdir trunk tags branches
+</TT>
+
+</BLOCKQUOTE>
+This last command creates 3 new folders that constitute the recommended
+structure to organize your files for using
+<EM>Subversion</EM>.
+The working files will be placed in
+ <TT>trunk</TT>.
+So, let move inside this folder
+<BLOCKQUOTE>
+<TT>cd trunk
+</TT>
+
+</BLOCKQUOTE>
+
+<P>
+We now make a folder to hold <TT>C++</TT> files or other files
+to build or software.
+<BLOCKQUOTE>
+<TT>mkdir ProjectPackMan.d
+</TT>
+
+</BLOCKQUOTE>
+
+<P>
+Now navigate inside this recently created folder.
+<BLOCKQUOTE>
+<TT>cd ProjectPackMan.d
+</TT>
+
+</BLOCKQUOTE>
+
+<P>
+Using an editor, for example in
+POSIX, we can use <TT>vi</TT>
+and construct some code.
+ Open the file
+<TT>hello.cpp</TT> 
+and place in the following content.
+<BR>
+<TT>/*  
+<BR>  - streams from the standard library 
+<BR>  - namespace std::name 
+<BR> */ 
+<BR>#include <SPAN CLASS="MATH">1#1</SPAN>iostream<SPAN CLASS="MATH">2#2</SPAN> 
+<BR> 
+<BR>
+int main(void) 
+<BR>{ 
+<BR>
+std::cout <SPAN CLASS="MATH">1#1</SPAN><SPAN CLASS="MATH">1#1</SPAN> "Hello World!" <SPAN CLASS="MATH">1#1</SPAN><SPAN CLASS="MATH">1#1</SPAN> std::endl; 
+<BR>
+return 0; 
+<BR>} 
+<BR>
+</TT>
+
+<P>
+</LI>
+<LI>Exit the structure
+
+<BLOCKQUOTE>
+<TT>cd ../../../
+</TT>
+
+</BLOCKQUOTE>
+This exits twice to the parent folder. You can achieve the same with
+
+<BLOCKQUOTE>
+<TT>cd 
+</TT>
+
+</BLOCKQUOTE>
+since this takes you to the <TT>home</TT> directory.
+Verify this with
+
+<BLOCKQUOTE>
+<TT>ls
+</TT>
+
+</BLOCKQUOTE>
+since you should see the folder  <TT>TemporaryFolder</TT>.
+
+<P>
+This is an initial folder structure we will place in the repository (but will
+not be managed by the repository).
+
+<P>
+</LI>
+<LI>We now do create a folder where the repository will reside
+
+<BLOCKQUOTE>
+<TT>mkdir IndividualrepositoryFolder
+</TT>
+
+</BLOCKQUOTE>
+
+<P>
+</LI>
+<LI>We now make the <EM>Subversion</EM> command to install all the folders
+we created and the configuration files to build a repository.
+We will not need to do anything else, perhaps for a long time.
+
+<P>
+
+<BLOCKQUOTE>
+<TT>svnadmin create IndividualrepositoryFolder
+</TT>
+
+</BLOCKQUOTE>
+
+<P>
+You cans see what <EM>Subversion</EM> has done with
+
+<BLOCKQUOTE>
+<TT>ls IndividualrepositoryFolder
+</TT>
+
+</BLOCKQUOTE>
+However, do not touch the files in this folder unless you have become
+a <EM>Subversion</EM> expert and you are absolutely sure of what you are doing.
+Even if you want to alter things here it is best to use the 
+administration tools of
+ <EM>Subversion</EM> itself.
+
+<P>
+</LI>
+<LI>We incorporate the structure into the repository with a command in one line
+<A NAME="tex2html5"
+  HREF="footnode.html#foot519"><SUP><SPAN CLASS="arabic">1</SPAN></SUP></A>:
+
+<DIV ALIGN="LEFT">
+<SMALL CLASS="SMALL"><TT>svn import TemporaryFolder file:///home/MyAccount/IndividualrepositoryFolder -m ``Initial''
+</TT>
+</SMALL>
+
+</DIV>
+
+<P>
+</LI>
+<LI>You can use subversion commands to check the folder is inside the
+repository with
+
+<BLOCKQUOTE>
+<SMALL CLASS="SMALL"><TT>svn list file:///home/MyAccount/IndividualrepositoryFolder/trunk
+</TT></SMALL>
+
+</BLOCKQUOTE>
+It is very important to realize the initial structure is not under version control
+although it was used to place folders into the repository.
+That is, the initial structure is not a local/working copy.
+Working in it any further is not useful. To have a working copy,
+it must be extracted first from the repository.
+<EM>Subversion</EM> only keeps track of files we tell them to keep track of.
+
+<P>
+</LI>
+<LI>Since we are finished with the work a t the server, we shall disconnect.
+
+<BLOCKQUOTE>
+<TT>exit
+</TT>
+
+</BLOCKQUOTE>
+
+<P>
+</LI>
+</OL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html123"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html121"
+  HREF="node6.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html117"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html124"
+  HREF="node8.html">Obtaining a sandbox</A>
+<B> Up:</B> <A NAME="tex2html122"
+  HREF="node6.html">Creating a repository</A>
+<B> Previous:</B> <A NAME="tex2html118"
+  HREF="node6.html">Creating a repository</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Vladimir Estivill-Castro
+2011-12-23
+</ADDRESS>
+</BODY>
+</HTML>

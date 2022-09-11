@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Documentaci&#243;</TITLE>
+<META NAME="description" CONTENT="Documentaci&#243;">
+<META NAME="keywords" CONTENT="Practica02">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="Practica02.css">
+
+<LINK REL="previous" HREF="node21.html">
+<LINK REL="up" HREF="node19.html">
+<LINK REL="next" HREF="node23.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html284"
+  HREF="node23.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html282"
+  HREF="node19.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html278"
+  HREF="node21.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html285"
+  HREF="node23.html">About this document ...</A>
+<B> Up:</B> <A NAME="tex2html283"
+  HREF="node19.html">Patrons</A>
+<B> Previous:</B> <A NAME="tex2html279"
+  HREF="node21.html">Tasca   Patr&#243;</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION000310300000000000000">
+Documentaci&#243;</A>
+</H3>
+La documentaci&#243; dels programes, programari i sistemes &#233;s fonamental per a la 
+seva utilitzaci&#243; (reutilitzaci&#243;) i l'evoluci&#243;.
+Tamb&#233; &#233;s molt &#250;til durant la construcci&#243; de programari. 
+Et recorda del que pensaves fer.
+ En canvi &#233;s una c&#224;rrega  produir-lo despr&#233;s quan el codi funciona.
+ En realitat, &#233;s molt millor produir la documentaci&#243;, a priori, com a guia (un contracte) 
+del que es vol aconseguir i mantenir-lo actualitzat i amb el codi corresponent.
+Per tant, les  eines que generen la
+ documentaci&#243; directament a partir del codi s&#243;n molt &#250;tils per saber com s'ha d'utilitzar cada m&#242;dul.
+
+<P>
+L'&#250;ltima tasca de aquesta practica es fer una traducci&#243; al catal&#225;
+( o al castell&#225;) de tot el codi de la carpeta PacMan i durant  aquesta tarducci&#243;
+introduir els comentaris adequats per poder  gener amb <TT>doxygen</TT> la  
+documentaci&#243; corresponent.
+(
+<TT><A NAME="tex2html19"
+  HREF="
+http://www.stack.nl/~dimitri/doxygen/
+">http://www.stack.nl/~dimitri/doxygen/
+</A></TT>)
+
+<P>
+Pots trobar una explicaci&#243; de <TT>doxygen</TT> i com ho fa per
+generar la documentaci&#243; dels comentaris, a:
+<BLOCKQUOTE>
+<SMALL CLASS="FOOTNOTESIZE"><TT><A NAME="tex2html20"
+  HREF="
+http://profesores.elo.utfsm.cl/~agv/elo330/2s04/projects/doxigen/main.html
+">http://profesores.elo.utfsm.cl/~agv/elo330/2s04/projects/doxigen/main.html
+</A></TT></SMALL>
+
+</BLOCKQUOTE>
+aqu&#237; pots trobar com utilitzar-lo
+<BLOCKQUOTE>
+<SMALL CLASS="FOOTNOTESIZE"><TT><A NAME="tex2html21"
+  HREF="
+http://profesores.elo.utfsm.cl/~agv/elo330/2s04/projects/doxigen/documentando.html
+">http://profesores.elo.utfsm.cl/~agv/elo330/2s04/projects/doxigen/documentando.html
+</A></TT></SMALL>
+
+</BLOCKQUOTE>
+
+<P>
+Amb POSIX, pots automatitzar aix&#242; en el fitxer <TT>Makefile</TT> del
+projecte. Pots fer un <EM>target</EM> anomenat <TT>doc</TT>.
+Un punt important es que <TT>doxygen</TT> necessita un fitxer de
+configuraci&#243;; normalment anomenat <TT>Doxyfile</TT>.
+La primera vegada, has de fer
+<BLOCKQUOTE>
+<TT>doxygen -g
+</TT>
+
+</BLOCKQUOTE>
+Aix&#243; et dona un fitxer de configuraci&#243; que cal editar.
+No t'oblideu de fer
+<BLOCKQUOTE>
+<TT>svn add Doxyfile
+</TT>
+
+</BLOCKQUOTE>
+
+<P>
+Revisa el fitxer <TT>Doxyfile</TT>. Es recomana especificar el
+<TT>PROJECT_NAME</TT>, i donar els valors
+<TT>YES</TT> a
+<TT>JAVADOC_AUTOBRIEF</TT> i
+<TT>EXTRACT_ALL</TT>.
+
+<P>
+Quan s'han acabat, no us oblideu de pujar els canvis al vostre servidor de svn.
+<BLOCKQUOTE>
+<TT>svn commit
+</TT>
+
+</BLOCKQUOTE>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html284"
+  HREF="node23.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html282"
+  HREF="node19.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html278"
+  HREF="node21.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html285"
+  HREF="node23.html">About this document ...</A>
+<B> Up:</B> <A NAME="tex2html283"
+  HREF="node19.html">Patrons</A>
+<B> Previous:</B> <A NAME="tex2html279"
+  HREF="node21.html">Tasca   Patr&#243;</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Vladimir Estivill-Castro
+2011-12-23
+</ADDRESS>
+</BODY>
+</HTML>

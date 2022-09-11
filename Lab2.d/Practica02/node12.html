@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Obtaining information</TITLE>
+<META NAME="description" CONTENT="Obtaining information">
+<META NAME="keywords" CONTENT="Practica02">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="Practica02.css">
+
+<LINK REL="next" HREF="node13.html">
+<LINK REL="previous" HREF="node11.html">
+<LINK REL="up" HREF="node9.html">
+<LINK REL="next" HREF="node13.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html177"
+  HREF="node13.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html175"
+  HREF="node9.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html169"
+  HREF="node11.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html178"
+  HREF="node13.html">Other interesting commands</A>
+<B> Up:</B> <A NAME="tex2html176"
+  HREF="node9.html">Using la your copy</A>
+<B> Previous:</B> <A NAME="tex2html170"
+  HREF="node11.html">Populating the local copy</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00035300000000000000">
+Obtaining information</A>
+</H3>
+Edit the file  <TT>README</TT> once more to include todays date.
+To see the state of the files in a folder you use
+<TT>svn status</TT>. Just try it:
+<BLOCKQUOTE>
+<TT> svn status
+</TT>
+
+</BLOCKQUOTE>
+The response should look like
+<BLOCKQUOTE>
+<TT>M      README
+</TT>
+
+</BLOCKQUOTE>
+This means that the file
+<TT>README</TT> has been modified and the
+version currently in our  <EM>sandbox</EM> is different of what is
+in the repository.
+What is the difference? you can find out with the following command
+<BLOCKQUOTE>
+<TT>svn diff README
+</TT>
+
+</BLOCKQUOTE>
+
+<P>
+Besides the <EM>subversion</EM> command
+<TT>status</TT> that gives a status report,
+we can find the trace of updates.
+For example, the command
+<TT>log</TT> gives a summary of the revision that have been placed in
+the repository.
+The report includes information of who made changes and the
+comment that was used to commit the changes.
+Make a <TT>commit</TT> and follow it with :
+<BLOCKQUOTE>
+<TT>svn log
+</TT>
+
+</BLOCKQUOTE>
+This time the answer may be short and very useful as we
+only been using the repository today, however, you will soon find
+it very useful.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html177"
+  HREF="node13.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html175"
+  HREF="node9.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html169"
+  HREF="node11.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html178"
+  HREF="node13.html">Other interesting commands</A>
+<B> Up:</B> <A NAME="tex2html176"
+  HREF="node9.html">Using la your copy</A>
+<B> Previous:</B> <A NAME="tex2html170"
+  HREF="node11.html">Populating the local copy</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Vladimir Estivill-Castro
+2011-12-23
+</ADDRESS>
+</BODY>
+</HTML>

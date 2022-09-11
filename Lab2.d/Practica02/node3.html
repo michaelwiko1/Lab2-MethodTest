@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>A fast introduction to Subversion</TITLE>
+<META NAME="description" CONTENT="A fast introduction to Subversion">
+<META NAME="keywords" CONTENT="Practica02">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="Practica02.css">
+
+<LINK REL="next" HREF="node21.html">
+<LINK REL="previous" HREF="node2.html">
+<LINK REL="up" HREF="Practica02.html">
+<LINK REL="next" HREF="node4.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html67"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html65"
+  HREF="Practica02.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html59"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html68"
+  HREF="node4.html">Important points</A>
+<B> Up:</B> <A NAME="tex2html66"
+  HREF="Practica02.html">AI 4 Games Assessment</A>
+<B> Previous:</B> <A NAME="tex2html60"
+  HREF="node2.html">Instructions</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00030000000000000000">
+A fast introduction to Subversion</A>
+</H1>
+Managing the code of a software development project under a version control system
+is crucial. In fact, as agile methodologies and incremental development
+are more common, it is important to have a clear trace of which version
+of the code supports which functionality.
+
+<P>
+Moreover, with development methods like Test-Driven Development, is even
+more important to develop functionality incrementally and to regularly
+commit version of the code where it is know what works (and which tests are green)
+and what functionality is to be incorporated. 
+Moreover, if the code eventually fails to work, it is easy to revert to an older
+version or to review recent changes to discover what/where/how a bug has been
+introduced, or how functionality believed to be working correctly was in fact
+not fully tested and needs refactoring.
+
+<P>
+There are 3 popular version systems for developing software and they are
+all public domain. They have been used repeatedly in industry and are
+share-ware. These are
+
+<OL>
+<LI><TT>cvs</TT>  <TT><A NAME="tex2html1"
+  HREF="http://cvs.nongnu.org/">http://cvs.nongnu.org/</A></TT>
+</LI>
+<LI><TT>svn</TT> (subversion) <TT><A NAME="tex2html2"
+  HREF=" http://svnbook.red-bean.com/">http://svnbook.red-bean.com/</A></TT>
+</LI>
+<LI><TT>git</TT>  <TT><A NAME="tex2html3"
+  HREF=" http://svnbook.red-bean.com/">http://svnbook.red-bean.com/</A></TT>
+</LI>
+</OL>
+
+<P>
+Here we give a quick guide of setting an <TT>svn</TT> server for your project.
+<B>Subversion</B>
+is a system of version control sometimes called a system for control
+of configurations (where a configuration is the state of files
+in a particular machine at a particular time).
+In such a system, you usually interact with a server that holds the repository
+The server could be the same machine you work on, however, for example,
+if you work at University and at home it is convenient to set a server machine you can access
+from both places (over the Internet).
+When you have a server that you can access from two places you don't have
+to carry the project files with you. When you start working in a
+particular location you do an <TT>update</TT> to obtain the latest version
+of your files and when you are finished working you do a <TT>commit</TT> to
+reflect your changes into the repository.
+The repository works for you as a backup as well and you can always retrieve
+earlier versions. You  would never lose your files, or your earlier versions
+of your files.
+
+<P>
+Therefore, such a system allows you to push files with progressive changes
+ into a server
+ (with the command <TT>commit</TT>).
+Symmetrically, you can reconcile the fresh version in a server into your local
+copy with the command  (<TT>update</TT>) and obtain the latest version that has
+changes (or updates from other developers when you work within
+a team of developers).
+It is even a very useful tool when you work alone.
+
+<P>
+The complete documentation and guides for
+<B>Subversion</B> is available on line:
+<BLOCKQUOTE>
+<TT><A NAME="tex2html4"
+  HREF="http://svnbook.red-bean.com/ ">http://svnbook.red-bean.com/ </A></TT>
+</BLOCKQUOTE>
+
+<P>
+With <EM>Subversion</EM>,
+you can un-do particular changes, see the differences between a previous version
+and your current version and you can review who has committed what.
+In fact, managers in many developing teams can trace the work
+of the software developers by reviewing who has worked on what.
+It also assist lecturers in universities monitor the regular
+work of students on a project.
+It also allows developing into 
+ (<EM>branches</EM>)
+and to mark some version with
+ (<EM>tags</EM>)  when we want to name a particular stable version of the software.
+
+<P>
+The repository is the central place where changes are recorded.
+The copies on your working computer (maybe you lap-top or a desktop
+in a lab) are called 
+<EM>sandboxes</EM>
+When you are satisfied with a version that fulfills some functionality
+you should reflect it into the repository with <TT>commit</TT>.
+When you need the latest version from the repository to
+start work on some module you need to do an <TT>update</TT>.
+In fact, you can do this not only with code (programming language files),
+but you can do it with images, documentation, reports of assignments, etc.
+That is, you can use it to regularly work on an assignment and
+progressively complete parts, committing every time a section is completed
+and improving the previous version into a new one closer to completion
+every time.
+Some of this ideas can be achieved by placing files in <EM>the cloud</EM>
+though the Internet, but many of the <EM>cloud</EM> facilities
+provide storage space, but little support for version control of
+the same file.
+
+<P>
+For working with <EM>subversion</EM> from a command line you use
+the command <TT>svn</TT> in <TT>POSIX</TT> (systems like MacOS terminal
+or LINUX terminal) provided that it is installed.
+However, there are many share-ware GUI tools to use
+<EM>subversion</EM> (or also <TT>cvs</TT> or <TT>git</TT>).
+For example
+<TT>esvn</TT> and  <TT>rapidsvn</TT> work in LINUX 
+while
+in <TT>Windows</TT>, the client <TT>TortoiseSVN</TT> is available.
+The software development environments like
+<TT>Eclipse</TT> or <TT>XCode</TT> also support version control systems like
+<TT>git</TT> and <TT>svn</TT>.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html69"
+  HREF="node4.html">Important points</A>
+<LI><A NAME="tex2html70"
+  HREF="node5.html">Connecting with a server</A>
+<LI><A NAME="tex2html71"
+  HREF="node6.html">Creating a repository</A>
+<UL>
+<LI><A NAME="tex2html72"
+  HREF="node7.html">The steps </A>
+</UL>
+<BR>
+<LI><A NAME="tex2html73"
+  HREF="node8.html">Obtaining a sandbox</A>
+<LI><A NAME="tex2html74"
+  HREF="node9.html">Using la your copy local</A>
+<UL>
+<LI><A NAME="tex2html75"
+  HREF="node10.html">Task</A>
+<LI><A NAME="tex2html76"
+  HREF="node11.html">Populating the local copy and reflecting in the repository  </A>
+<LI><A NAME="tex2html77"
+  HREF="node12.html">Obtaining information</A>
+<LI><A NAME="tex2html78"
+  HREF="node13.html">Other interesting commands </A>
+</UL>
+<BR>
+<LI><A NAME="tex2html79"
+  HREF="node14.html">What shall you submit?</A>
+<LI><A NAME="tex2html80"
+  HREF="node15.html">Reviewing compilation</A>
+<LI><A NAME="tex2html81"
+  HREF="node16.html">What shall be submitted?</A>
+<LI><A NAME="tex2html82"
+  HREF="node17.html">Patterns</A>
+<UL>
+<LI><A NAME="tex2html83"
+  HREF="node18.html">The pattern MVC</A>
+<LI><A NAME="tex2html84"
+  HREF="node19.html">Task -- The pattern MVC</A>
+<LI><A NAME="tex2html85"
+  HREF="node20.html">Documentation</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html67"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html65"
+  HREF="Practica02.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html59"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html68"
+  HREF="node4.html">Important points</A>
+<B> Up:</B> <A NAME="tex2html66"
+  HREF="Practica02.html">AI 4 Games Assessment</A>
+<B> Previous:</B> <A NAME="tex2html60"
+  HREF="node2.html">Instructions</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Vladimir Estivill-Castro
+2011-12-23
+</ADDRESS>
+</BODY>
+</HTML>

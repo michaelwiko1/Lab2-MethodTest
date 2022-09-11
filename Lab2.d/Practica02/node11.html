@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Populating the local copy and reflecting in the repository </TITLE>
+<META NAME="description" CONTENT="Populating the local copy and reflecting in the repository ">
+<META NAME="keywords" CONTENT="Practica02">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="Practica02.css">
+
+<LINK REL="next" HREF="node12.html">
+<LINK REL="previous" HREF="node10.html">
+<LINK REL="up" HREF="node9.html">
+<LINK REL="next" HREF="node12.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html167"
+  HREF="node12.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html165"
+  HREF="node9.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html159"
+  HREF="node10.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html168"
+  HREF="node12.html">Obtaining information</A>
+<B> Up:</B> <A NAME="tex2html166"
+  HREF="node9.html">Using la your copy</A>
+<B> Previous:</B> <A NAME="tex2html160"
+  HREF="node10.html">Task</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00035200000000000000">
+Populating the local copy and reflecting in the repository  </A>
+</H3>
+Once you have been working with one
+<EM>sandbox</EM> you must place the files for your programming tasks
+in the folders there.
+For example, create and edit a file named <TT>README </TT> inside the folder
+for the code.
+Review the following content and place what is suitable in your case.
+<BLOCKQUOTE>
+<!-- MATH
+ $\framebox{
+\parbox{12cm}{
+Laboratory 2 - - a program for modeling objects in PackMan.
+Copyright (C) 2011, {\tt YOUR NAME}.
+\par
+Based on an initial framework by Vlad Estivill-Castro / Griffith University
+\par
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+\par
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+\par
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+\par
+This folder contains the implementation of XXXX
+}}$
+ -->
+3#3
+</BLOCKQUOTE>
+An alternative text may be
+<BLOCKQUOTE>
+<!-- MATH
+ $\framebox{
+\parbox{12cm}{
+This program is developed as part of an assignment at XXXXXXX
+Based on an initial framework by Vlad Estivill-Castro / Griffith University
+\par
+All rights regarding the intellectual property generated here
+are exclusive property of the author under the laws of
+CITY AND COUNTRY.
+}}$
+ -->
+4#4
+</BLOCKQUOTE>
+To add this file under the control of
+<EM>Subversion</EM> we must do: 
+<BLOCKQUOTE>
+<TT>svn add README
+</TT>
+
+</BLOCKQUOTE>
+You should see a reply like
+<BLOCKQUOTE>
+<TT>A         README
+</TT>
+
+</BLOCKQUOTE>
+This is 
+<EM>Subversion</EM> reporting it will keep a watch on this file from now
+on, but not that it is already reflected in the repository.
+To actually place it in the repository, we must issue the next command.
+<BLOCKQUOTE>
+<TT>svn commit -m ``Description of intellectual rights of my program''
+</TT>
+
+</BLOCKQUOTE>
+You should notice that the version number increases.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Vladimir Estivill-Castro
+2011-12-23
+</ADDRESS>
+</BODY>
+</HTML>
